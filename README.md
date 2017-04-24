@@ -9,4 +9,4 @@ See the `EmbeddingExample` class to see an example of how to use the API to secu
 
 ## Documentation
 
-The API documentation (available services and methods) can be found [here](http://docs.cumul.io).
+The API documentation (available services and methods) can be found [here](http://documentation.cumul.io/apidocs.html).
