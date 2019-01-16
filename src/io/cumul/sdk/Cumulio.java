@@ -1,9 +1,6 @@
 package io.cumul.sdk;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -155,7 +152,15 @@ public class Cumulio {
 		
 		String line;
 		StringBuilder result = new StringBuilder();
-		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		InputStream _is;
+
+		if (conn.getResponseCode() < 400) {
+			_is = conn.getInputStream();
+		} else {
+			/* error from server */
+			_is = conn.getErrorStream();
+		}
+		BufferedReader br = new BufferedReader(new InputStreamReader(_is));
 		while((line = br.readLine()) != null) {
 			result.append(line);
 	    }
