@@ -11,7 +11,7 @@ public class CumulioExample {
 		
 		try {
 			// Setup connection
-			Cumulio client = new Cumulio("< Your API key >","< Your API token >");
+			Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
 			
 			// Example 1: create a new dataset
 			JSONObject securable = client.create("securable",

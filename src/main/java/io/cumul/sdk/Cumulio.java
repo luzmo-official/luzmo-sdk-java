@@ -13,13 +13,12 @@ import com.google.common.collect.ImmutableMap;
 
 public class Cumulio {
 	
-	private final static String APP = "https://app.cumul.io";
-	private final static String HOST = "https://api.cumul.io";
-	private final static int PORT = 443;
+	private final static String API_HOST = "https://api.cumul.io";
 	private final static String VERSION = "0.1.0";
 	
 	private String key;
 	private String token;
+	private String api_host;
 
 	/**
 	 *
@@ -27,8 +26,19 @@ public class Cumulio {
 	 * @param token String, your Cumul.io API Token
 	 */
 	public Cumulio(String key, String token) {
+		this(key, token, API_HOST);
+	}
+
+	/**
+	 *
+	 * @param key String, your Cumul.io API Key
+	 * @param token String, your Cumul.io API Token
+	 * @param api_host String, Cumul.io API endpoint
+	 */
+	public Cumulio(String key, String token, String api_host) {
 		this.key = key;
 		this.token = token;
+		this.api_host = api_host;
 	}
 
 	/**
@@ -36,7 +46,7 @@ public class Cumulio {
 	 * @param resource String, the resource type E.g.'securable'
 	 * @param properties JSONObject of resource properties
 	 * @return JSONObject response if successful
-	 * @throws IOException
+	 * @throws IOException In case the 'create' call could not be succesfully completed
 	 */
 	public JSONObject create(String resource, JSONObject properties) throws IOException {
 		return create(resource, properties, null);
@@ -47,7 +57,7 @@ public class Cumulio {
 	 * @param resource String, the resource type E.g.'securable'
 	 * @param properties JSONObject of resource properties
 	 * @return JSONObject response if successful
-	 * @throws IOException
+	 * @throws IOException In case the 'create' call could not be succesfully completed
 	 */
 	public JSONObject create(String resource, @SuppressWarnings("rawtypes") ImmutableMap properties) throws IOException {
 		return create(resource, new JSONObject(properties), null);
@@ -59,7 +69,7 @@ public class Cumulio {
 	 * @param properties ImmutableMap of resource properties
 	 * @param associations ImmutableList of associations
 	 * @return JSONObject response if successful
-	 * @throws IOException
+	 * @throws IOException In case the 'create' call could not be succesfully completed
 	 */
 	public JSONObject create(String resource, @SuppressWarnings("rawtypes") ImmutableMap properties, @SuppressWarnings("rawtypes") ImmutableList associations) throws IOException {
 		return create(resource, new JSONObject(properties), new JSONArray(associations));
@@ -71,7 +81,7 @@ public class Cumulio {
 	 * @param properties JSONObject of resource properties
 	 * @param associations JSONArray of associations
 	 * @return JSONObject response if successful
-	 * @throws IOExcepti
+	 * @throws IOException In case the 'create' call could not be succesfully completed
 	 */
 	public JSONObject create(String resource, JSONObject properties, JSONArray associations) throws IOException {
 		JSONObject query = new JSONObject();
@@ -86,7 +96,7 @@ public class Cumulio {
 	 * @param resource String, the resource type E.g.'securable'
 	 * @param filter ImmutableMap of filters
 	 * @return JSONObject response if successful
-	 * @throws IOException
+	 * @throws IOException In case the 'get' call could not be succesfully completed
 	 */
 	public JSONObject get(String resource, @SuppressWarnings("rawtypes") ImmutableMap filter) throws IOException {
 		return get(resource, new JSONObject(filter));
@@ -97,7 +107,7 @@ public class Cumulio {
 	 * @param resource String, the resource type E.g.'securable'
 	 * @param filter JSONObject of filters
 	 * @return JSONObject response if successful
-	 * @throws IOException
+	 * @throws IOException In case the 'get' call could not be succesfully completed
 	 */
 	public JSONObject get(String resource, JSONObject filter) throws IOException {
 		JSONObject query = new JSONObject();
@@ -111,7 +121,7 @@ public class Cumulio {
 	 * @param resource String, the resource type E.g.'securable'
 	 * @param id String id of resouce to be deleted
 	 * @return Empty Response
-	 * @throws IOException
+	 * @throws IOException In case the 'delete' call could not be succesfully completed
 	 */
 	public JSONObject delete(String resource, String id) throws IOException {
 		return delete(resource, id, new JSONObject());
@@ -123,7 +133,7 @@ public class Cumulio {
 	 * @param id String id of resource to be deleted
 	 * @param properties ImmutableMap properties of resource to be deleted
 	 * @return Empty response
-	 * @throws IOException
+	 * @throws IOException In case the 'delete' call could not be succesfully completed
 	 */
 	public JSONObject delete(String resource, String id, @SuppressWarnings("rawtypes") ImmutableMap properties) throws IOException {
 		return delete(resource, id, new JSONObject(properties));
@@ -135,7 +145,7 @@ public class Cumulio {
 	 * @param id String id of resource to be deleted
 	 * @param properties JSONObject properties of resource to be deleted
 	 * @return Empty response
-	 * @throws IOException
+	 * @throws IOException In case the 'delete' call could not be succesfully completed
 	 */
 	public JSONObject delete(String resource, String id, JSONObject properties) throws IOException {
 		JSONObject query = new JSONObject();
@@ -151,7 +161,7 @@ public class Cumulio {
 	 * @param id String id of resource to be updated
 	 * @param properties ImmutableMap properties of resource to be updated
 	 * @return JSONObject response
-	 * @throws IOException
+	 * @throws IOException In case the 'update' call could not be succesfully completed
 	 */
 	public JSONObject update(String resource, String id, @SuppressWarnings("rawtypes") ImmutableMap properties) throws IOException {
 		return update(resource, id, new JSONObject(properties));
@@ -163,7 +173,7 @@ public class Cumulio {
 	 * @param id String id of resource to be updated
 	 * @param properties JSONObject properties of resource to be updated
 	 * @return JSONObject response
-	 * @throws IOException
+	 * @throws IOException In case the 'update' call could not be succesfully completed
 	 */
 	public JSONObject update(String resource, String id, JSONObject properties) throws IOException {
 		JSONObject query = new JSONObject();
@@ -180,7 +190,7 @@ public class Cumulio {
 	 * @param associationRole String
 	 * @param associationId String
 	 * @return JSONObject
-	 * @throws IOException
+	 * @throws IOException In case the 'associate' call could not be succesfully completed
 	 */
 	public JSONObject associate(String resource, String id, String associationRole, String associationId) throws IOException {
 		return associate(resource, id, associationRole, associationId, new JSONObject());
@@ -194,7 +204,7 @@ public class Cumulio {
 	 * @param associationId String
 	 * @param properties ImmutableMap of properties
 	 * @return JSONObject
-	 * @throws IOException
+	 * @throws IOException In case the 'associate' call could not be succesfully completed
 	 */
 	public JSONObject associate(String resource, String id, String associationRole, String associationId, @SuppressWarnings("rawtypes") ImmutableMap properties) throws IOException {
 		return associate(resource, id, associationRole, associationId, new JSONObject(properties));
@@ -208,7 +218,7 @@ public class Cumulio {
 	 * @param associationId String
 	 * @param properties JSONObject of properties
 	 * @return JSONObject
-	 * @throws IOException
+	 * @throws IOException In case the 'associate' call could not be succesfully completed
 	 */
 	public JSONObject associate(String resource, String id, String associationRole, String associationId, JSONObject properties) throws IOException {
 		JSONObject association = new JSONObject();
@@ -231,7 +241,7 @@ public class Cumulio {
 	 * @param associationRole String
 	 * @param associationId String
 	 * @return JSONObject
-	 * @throws IOException
+	 * @throws IOException In case the 'dissociate' call could not be succesfully completed
 	 */
 	public JSONObject dissociate(String resource, String id, String associationRole, String associationId) throws IOException {
 		JSONObject association = new JSONObject();
@@ -250,7 +260,7 @@ public class Cumulio {
 	 *
 	 * @param filter
 	 * @return
-	 * @throws IOException
+	 * @throws IOException In case the 'query' call could not be succesfully completed
 	 */
 	public JSONObject query(JSONObject filter) throws IOException {
 		return get("data", filter);
@@ -260,21 +270,10 @@ public class Cumulio {
 	 *
 	 * @param filter
 	 * @return
-	 * @throws IOException
+	 * @throws IOException In case the 'query' call could not be succesfully completed
 	 */
 	public JSONObject query(@SuppressWarnings("rawtypes") ImmutableMap filter) throws IOException {
 		return get("data", filter);
-	}
-
-	/**
-	 *
-	 * @param dashboardId, String
-	 * @param authorization, JSONObject
-	 * @return
-	 * @throws IOException
-	 */
-	public URL iframe(String dashboardId, JSONObject authorization) throws IOException {
-		return new URL(APP + "/s/" + dashboardId + "?key=" + authorization.getString("id") + "&token=" + authorization.getString("token"));
 	}
 
 	/**
@@ -283,7 +282,7 @@ public class Cumulio {
 	 * @param action
 	 * @param query
 	 * @return
-	 * @throws IOException
+	 * @throws IOException In case the call could not be succesfully completed
 	 */
 	private JSONObject _emit(String resource, String action, JSONObject query) throws IOException {
 		query.put("key", this.key);
@@ -291,7 +290,7 @@ public class Cumulio {
 		query.put("version", VERSION);
 		String payload = query.toString();
 				
-		URL url = new URL(HOST + ':' + PORT + '/' + VERSION + '/' + resource);
+		URL url = new URL(this.api_host + '/' + VERSION + '/' + resource);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("POST");
 		conn.setRequestProperty("X-HTTP-Method-Override", "PATCH");
