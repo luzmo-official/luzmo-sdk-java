@@ -66,7 +66,7 @@ public class EmbeddingExample {
 				t.sendResponseHeaders(200, response.length());
 			}
 			catch (Exception e) {
-				response = "Oops, an error occurred during the connection to Cumul.io: " + e.getMessage();
+				response = "Oops, an error occurred during the connection to Luzmo: " + e.getMessage();
 				t.sendResponseHeaders(500, response.length());
 			}
         	
