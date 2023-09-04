@@ -1,17 +1,17 @@
-package io.cumul.sdk;
+package com.luzmo.sdk;
 
 import java.io.IOException;
 import org.json.JSONObject;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-public class CumulioExample {
+public class LuzmoExample {
 
 	public static void main(String[] args) {
 		
 		try {
 			// Setup connection
-			Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
+			Luzmo client = new Luzmo("< Your API key >", "< Your API token >");
 			
 			// Example 1: create a new dataset
 			JSONObject securable = client.create("securable",
@@ -81,7 +81,7 @@ public class CumulioExample {
 		
 		}
 		catch (IOException e) {
-			System.out.println("Oops, an error occurred during the connection to Cumul.io: " + e.getMessage());
+			System.out.println("Oops, an error occurred during the connection to Luzmo: " + e.getMessage());
 		}
 	}
 }

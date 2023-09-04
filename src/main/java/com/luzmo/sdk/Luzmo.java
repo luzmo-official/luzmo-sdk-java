@@ -1,4 +1,4 @@
-package io.cumul.sdk;
+package com.luzmo.sdk;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -11,9 +11,9 @@ import org.json.JSONObject;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
-public class Cumulio {
+public class Luzmo {
 	
-	private final static String API_HOST = "https://api.cumul.io";
+	private final static String API_HOST = "https://api.luzmo.com";
 	private final static String VERSION = "0.1.0";
 	
 	private String key;
@@ -22,20 +22,20 @@ public class Cumulio {
 
 	/**
 	 *
-	 * @param key String, your Cumul.io API Key
-	 * @param token String, your Cumul.io API Token
+	 * @param key String, your Luzmo API Key
+	 * @param token String, your Luzmo API Token
 	 */
-	public Cumulio(String key, String token) {
+	public Luzmo(String key, String token) {
 		this(key, token, API_HOST);
 	}
 
 	/**
 	 *
-	 * @param key String, your Cumul.io API Key
-	 * @param token String, your Cumul.io API Token
-	 * @param api_host String, Cumul.io API endpoint
+	 * @param key String, your Luzmo API Key
+	 * @param token String, your Luzmo API Token
+	 * @param api_host String, Luzmo API endpoint
 	 */
-	public Cumulio(String key, String token, String api_host) {
+	public Luzmo(String key, String token, String api_host) {
 		this.key = key;
 		this.token = token;
 		this.api_host = api_host;
