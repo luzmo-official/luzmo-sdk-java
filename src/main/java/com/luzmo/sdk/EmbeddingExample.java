@@ -1,4 +1,4 @@
-package io.cumul.sdk;
+package com.luzmo.sdk;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -28,7 +28,7 @@ public class EmbeddingExample {
 			String response;
 			try {
 				// Setup connection
-				Cumulio client = new Cumulio("< Your API key >", "< Your API token >");
+				Luzmo client = new Luzmo("< Your API key >", "< Your API token >");
 
 				// On page requests of pages containing embedded dashboards, request an "authorization"
 				JSONObject authorization = client.create("authorization", ImmutableMap.builder()
@@ -50,24 +50,23 @@ public class EmbeddingExample {
 						"<html>" +
 						"  <head>" +
 						"    <meta charset=\"UTF-8\">" +
-						"    <title>Cumul.io embedding example</title>" +
+						"    <title>Luzmo embedding example</title>" +
 						"  </head>" +
 						"  <body>" +
 						"    <div style=\"margin-left: 28px; width: 650px;\">" +
-						"      <h1 style=\"font-weight: 200;\">Cumul.io embedding example</h1>" +
-						"      <p>This page contains an example of an embedded dashboard of Cumul.io. The dashboard data is securely filtered server-side, so clients can only access data to which your application explicitly grants access (in this case, the \"Damflex\" product).</p>" +
+						"      <h1 style=\"font-weight: 200;\">Luzmo embedding example</h1>" +
+						"      <p>This page contains an example of an embedded dashboard of Luzmo. The dashboard data is securely filtered server-side, so clients can only access data to which your application explicitly grants access (in this case, the \"Damflex\" product).</p>" +
 						"    </div>" +
-					  "    <cumulio-dashboard dashboardSlug=\"my-dashboard-slug\" authKey=\"" + authorization.getString("id") + "\" authToken=\"" + authorization.getString("token") + "\">" +
-						"    </cumulio-dashboard>" +
-						"    <script src=\"https://static.cumul.io/js/cumulio-dashboard/0.0.4-beta/cumulio-dashboard.polyfill.js\"></script>" +
-						"    <script src=\"https://static.cumul.io/js/cumulio-dashboard/0.0.4-beta/cumulio-dashboard.min.js\"></script>" +
+					  "    <luzmo-dashboard dashboardSlug=\"my-dashboard-slug\" authKey=\"" + authorization.getString("id") + "\" authToken=\"" + authorization.getString("token") + "\">" +
+						"    </luzmo-dashboard>" +
+						"    <script src=\"https://cdn.luzmo.com/js/luzmo-embed/5.0.0/luzmo-embed.min.js\"></script>" +
 						"  </body>" +
 						"</html>";
 				
 				t.sendResponseHeaders(200, response.length());
 			}
 			catch (Exception e) {
-				response = "Oops, an error occurred during the connection to Cumul.io: " + e.getMessage();
+				response = "Oops, an error occurred during the connection to Luzmo: " + e.getMessage();
 				t.sendResponseHeaders(500, response.length());
 			}
         	
