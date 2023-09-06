@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.cumul</groupId>
+    <groupId>com.luzmo</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.2.1</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>io.cumul:sdk</name>
-    <description>Java SDK for connecting and querying Cumul.io</description>
-    <url>https://developer.cumul.io</url>
+    <name>com.luzmo:sdk</name>
+    <description>Java SDK for connecting and querying Luzmo</description>
+    <url>https://developer.luzmo.com</url>
     <licenses>
         <license>
             <name>MIT License</name>
@@ -17,19 +17,19 @@
     <developers>
         <developer>
             <name>Haroen</name>
-            <email>haroen@cumul.io</email>
-            <organization>Cumul.io</organization>
-            <organizationUrl>https://cumul.io</organizationUrl>
+            <email>engineering@luzmo.com</email>
+            <organization>Luzmo</organization>
+            <organizationUrl>https://luzmo.com</organizationUrl>
         </developer>
     </developers>
     <issueManagement>
-        <url>https://github.com/cumulio/cumul.io-sdk-java/issues</url>
+        <url>https://github.com/luzmo-official/luzmo-sdk-java/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
     <scm>
-        <connection>scm:git:git://github.com/cumulio/cumul.io-sdk-java.git</connection>
-        <developerConnection>scm:git:ssh://github.com:cumulio/cumulio-sdk-java.git</developerConnection>
-        <url>https://github.com/cumulio/cumul.io-sdk-java</url>
+        <connection>scm:git:git://github.com/luzmo-official/luzmo-sdk-java</connection>
+        <developerConnection>scm:git:ssh://github.com:luzmo-official/luzmo-sdk-java.git</developerConnection>
+        <url>https://github.com/luzmo-official/luzmo-sdk-java</url>
     </scm>
     <distributionManagement>
         <snapshotRepository>
